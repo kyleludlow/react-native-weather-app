@@ -3,11 +3,12 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  View
+  NavigatorIOS
 } from 'react-native';
+import LocalWeather from './LocalWeather'
 
-const styles = StyleSheet.create({
+
+ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
@@ -16,9 +17,12 @@ const styles = StyleSheet.create({
 class Local extends Component {
   render() {
     return(
-      <View>
-        <Text>Local View</Text>
-      </View>
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Local Weather',
+          component: LocalWeather
+        }}/>
     );
   }
 }

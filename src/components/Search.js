@@ -3,11 +3,12 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
-  View
+  NavigatorIOS
 } from 'react-native';
+import SearchWeather from './SearchWeather'
 
-const styles = StyleSheet.create({
+
+ const styles = StyleSheet.create({
   container: {
     flex: 1
   }
@@ -16,9 +17,12 @@ const styles = StyleSheet.create({
 class Search extends Component {
   render() {
     return(
-      <View>
-        <Text>Search View</Text>
-      </View>
+      <NavigatorIOS
+        style={styles.container}
+        initialRoute={{
+          title: 'Search by City',
+          component: SearchWeather
+        }}/>
     );
   }
 }
