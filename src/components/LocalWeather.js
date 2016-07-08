@@ -42,8 +42,8 @@ class LocalWeather extends Component {
     super(props);
     this.state = {
       weatherData: null,
-      initialposition: 'unknown',
-      lastPosition: 'unknown'
+      currentLocation: 'unknown',
+      lastLocation: 'unknown'
     };
   }
 
@@ -58,8 +58,25 @@ class LocalWeather extends Component {
   //   })
   // }
 
+// let watchID = (null ?number);
+
+componentDidMount() {
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      let currentLocation = JSON.stringify(position);
+      console.log(currentLocation);
+      this.setState({currentLocation});
+    },
+    (error) => alert(error.message),
+    {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}
+  );
+}
+
+
 
   render() {
+
+    console.log(this.state);
     return(
       <View style={styles.container}>
         <Text style={styles.city}>San Francisco</Text>
